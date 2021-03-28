@@ -6,4 +6,11 @@ config :samhstn, SamhstnWeb.Endpoint,
 
 config :logger, level: :warn
 
-config :samhstn, :routes, Samhstn.Routes.InMemory
+config :samhstn, :route, Samhstn.Route.InMemory
+
+config :samhstn, :route_backoff,
+  min: :timer.seconds(3),
+  max: :timer.seconds(30),
+  multiplier: 2
+
+config :samhstn, :children, [SamhstnWeb.Endpoint]

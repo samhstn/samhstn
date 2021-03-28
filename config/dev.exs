@@ -12,7 +12,12 @@ config :phoenix, :stacktrace_depth, 20
 # initialize plugs at runtime for faster dev compilation
 config :phoenix, :plug_init_mode, :runtime
 
-config :samhstn, :routes, Samhstn.Routes.Sandbox
+config :samhstn, :route, Samhstn.Route.Sandbox
+
+config :samhstn, :route_backoff,
+  min: 100,
+  max: :timer.seconds(20),
+  multiplier: 2
 
 config :ex_aws,
   secret_access_key: [{:awscli, "samhstn-admin", 30}],
